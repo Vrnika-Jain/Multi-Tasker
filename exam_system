@@ -1,0 +1,45 @@
+import java.io.*;
+public class examSystem
+{
+    //BufferedReader buf=new BufferedReader(new InputStreamReader (System.in));
+    public static void main(String [] agrs)throws IOException{
+        BufferedReader buf=new BufferedReader(new InputStreamReader (System.in));
+        /*Questions for the exam/quiz*/
+        String ques1="What of the following is the default value of an instance variable?\n"+"(a)null\n(b)0\n(c)Depends upon type of variables\n(d)not assigned\n";
+        String ques2="What is the size of boolean variable?\n"+"(a)8 bit\n(b)16 bit\n(c)32 bit\n(d)64 bit\n";
+        String ques3="What is Encapsulation?\n"+"(a)Encapsulation is a technique to define different methods of same type.\n(b)Encapsulation is the ability of an object to take on many forms.\n(c)Encapsulation is the technique of making the fields in a class private and providing access to the fields via public methods.\n(d)None of the above.\n";
+        String ques4="Does garbage collection guarantee that a program will not run out of memory?\n"+"(a)True\n(b)False\n(c)Maybe\n(d)Not sure\n";
+        String ques5="Which of the following stands true about default modifier of class members?\n"+"(a)By default, variables, methods and constructors can be accessed by subclass only.\n(b)By default, variables, methods and constructors can be accessed by any class lying in any package.\n(c)By default, variables, methods and constructors can be accessed by any class lying in the same package.\n(d)None of the above.\n";
+        String ques6="What is NullPointerException?\n"+"(a)A NullPointerException is thrown when calling the instance method of a null object or modifying/accessing field of a null object.\n(b)A NullPointerException is thrown when object is set as null.\n(c)A NullPointerException is thrown when object property is set as null.\n(d)None of the above.\n";
+        String ques7="What is the default value of char variable?\n"+"(a)'\u0000'\n(b)0\n(c)null\n(d)not defined\n";
+        String ques8="What of the following is the default value of an instance variable?\n"+"(a)null\n(b)0\n(c)Depends upon the type of variable\n(d)Not assigned\n";
+        String ques9="What is the default value of char variable?\n"+"(a)'\u0000'\n(b)0\n(c)null\n(d)not defined\n";
+        String ques10="Which of the following option leads to the portability and security of Java?\n"+"(a)Bytecode is executed by JVM\n(b)The applet makes the Java code secure and portable\n(c)Use of exception handling\n(d)Dynamic binding between objects\n";
+        /*separate answers for the particular questions*/
+        Question [] answers={
+            new Question(ques1,"c"),
+            new Question(ques2,"b"),
+            new Question(ques3,"c"),
+            new Question(ques4,"a"),
+            new Question(ques5,"c"),
+            new Question(ques6,"a"),
+            new Question(ques7,"a"),
+            new Question(ques8,"a"),
+            new Question(ques9,"a"),
+            new Question(ques10,"a")
+        };
+        takeQuiz(answers);//calling the takeQuiz method
+    }
+    public static void takeQuiz(Question [] answers)throws IOException{
+        BufferedReader buf=new BufferedReader(new InputStreamReader (System.in));
+        int score=0;
+        for(int i=0;i<answers.length;i++){
+            System.out.println(answers[i].qustn);
+            String ans= buf.readLine();
+            if(ans.equals(answers[i].ans)){
+                score++;
+            }
+        }
+        System.out.println("You got "+score+"/"+answers.length);
+    }
+} 
