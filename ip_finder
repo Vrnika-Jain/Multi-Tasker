@@ -1,0 +1,43 @@
+
+import javax.swing.*;//provides JButton JLabel etc packages to craete window-based applications  
+import java.awt.event.*;//provides interface and classes to dealing with different events  
+import java.net.*;//to do low-level networking with DatagramPacket objects
+public class IPFinder extends JFrame implements ActionListener{  
+    JLabel lbl;//display a short string or an image icon.
+    JTextField tf;//allowing the editing of a single line text  
+    JButton bttn;//create a labeled button
+    IPFinder(){  
+        super("IP Finder Tool");  
+        lbl=new JLabel("Enter Website URL:");//display a short string or an image icon
+        lbl.setBounds(50,70,150,20);//set position & size as(x,y,width,height)  
+        tf=new JTextField();  
+        tf.setBounds(50,100,200,20);  
+      
+        bttn=new JButton("Find IP");//button platform to result when pushed  
+        bttn.setBounds(100,150,80,30);  
+        bttn.addActionListener(this);//when clicked it notify to ActionEvent to perform 
+        /*to add a written elements into a Set collection*/ 
+        add(lbl);  
+        add(tf);  
+        add(bttn);
+        
+        setSize(400,300);//set the new size of the vector  
+        setLayout(null);//position of our component  
+        setVisible(true);//appear on screen  
+    }  
+    public void actionPerformed(ActionEvent e){  
+        String url=tf.getText();//extracting text from message catalogs  
+        try {  
+            InetAddress ia=InetAddress.getByName(url);//cache to store host name resolutions  
+            String ip=ia.getHostAddress();//returning the IP address in textual form
+            //providing the dialog box
+            JOptionPane.showMessageDialog(this,"IP of "+url+" is: "+ip);  
+        } catch (UnknownHostException e1) { //IP address of a hostname could not be determined 
+            //providing dialog box for the exception
+            JOptionPane.showMessageDialog(this,e1.toString());  
+        }  
+    }  
+    public static void main(String[] args) {  
+        new IPFinder();  
+    }  
+}  
