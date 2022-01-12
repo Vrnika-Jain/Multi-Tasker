@@ -1,0 +1,49 @@
+import java.io.*;//Input Outputs using Buffered Reader class
+public class calculator
+{
+    char oprtn;
+    double num1,num2,result;
+    BufferedReader buf=new BufferedReader(new InputStreamReader(System.in));
+    public void cal_oprtn()throws IOException{
+        System.out.println("Enter the numbers: ");
+        num1=Double.parseDouble(buf.readLine());
+        num2=Double.parseDouble(buf.readLine());
+        System.out.println("Enter the operation you want to perform('+' for addition,'-' for subraction,'*' for multiplication,'/' for division,'^' for power,'%' for remainder,'~' for square rooting): ");
+        oprtn= buf.readLine().charAt(0);
+        switch(oprtn){
+            case '+'://for addition task
+                result=num1+num2;
+                System.out.println(num1+"+"+num2+"= "+result);
+                break;
+            case '-'://for subtraction task
+                result=num1-num2;
+                System.out.println(num1+"-"+num2+"= "+result);
+                break;
+            case '*'://for multiplication task
+                result=num1+num2;
+                System.out.println(num1+"*"+num2+"= "+result);
+                break;
+            case '/'://for division task
+                result=num1+num2;
+                System.out.println(num1+"/"+num2+"= "+result);
+                break;
+            case '^'://for exponential task
+                result=Math.pow(num1,num2);
+                System.out.println(num1+"+"+num2+"= "+result);
+                break;
+            case '%'://to get the remainder
+                result=num1+num2;
+                System.out.println(num1+"%"+num2+"= "+result);
+                break;
+            case '~'://to square root the given number
+               if(num2==0){
+                result=Math.sqrt(num1);
+                System.out.println("sqrt"+num1+"= "+result);
+            }
+            break;
+        }
+    }
+    public static void main(String args[])throws IOException{
+        new calculator();
+    }
+}
