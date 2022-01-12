@@ -1,0 +1,60 @@
+import java.awt.*;//API to develop Graphical User Interface (GUI)  
+import java.awt.event.*;//provides interface and classes to dealing with different events  
+import java.io.InputStream;//abstract class representing an input stream of bytes  
+import java.net.*;//to do low-level networking with DatagramPacket objects  
+import javax.swing.*;//provides JButton JLabel etc packages to craete window-based applications
+public class SourceGetter extends JFrame implements ActionListener{  
+    JTextField tf;//allowing the editing of a single line text 
+    JTextArea ta;//allowing the editing of multiple line text  
+    JButton bttn;//create a labeled button  
+    JLabel lbl;//display a short string or an image icon.  
+    SourceGetter(){  
+        super("Source Getter Tool - JTP");  
+        lbl=new JLabel("Enter Website URL:");//display a short string or an image icon 
+        lbl.setBounds(50,50,250,20);//set position & size as(x,y,width,height)
+          
+        tf=new JTextField("http://www.google.com");//default placeholder  
+        tf.setBounds(50,100,250,20);  
+          
+        bttn=new JButton("Get Source Code");//button platform to result when pushed  
+        bttn.setBounds(50, 150,180,30);  
+        bttn.addActionListener(this);//when clicked it notify to ActionEvent to perform
+          
+        ta=new JTextArea();  
+        JScrollPane sp=new JScrollPane(ta);//making scrollable view of a component
+        sp.setBounds(50,200,350,250); 
+        
+        /*to add a written elements into a Set collection*/ 
+        add(lbl);add(tf);add(bttn);add(sp); 
+        
+        setSize(500,500);//set the new size of the vector  
+        setLayout(null);//position of our component 
+        setVisible(true);//appear on screen  
+    }  
+    public void actionPerformed(ActionEvent e){  
+        String s=tf.getText();//extracting text from message catalogs  
+        if(s==null){}  
+        else{  
+            try{  
+            URL u=new URL(s);//Uniform Resource Locator trying to point towards resource on the WorldWideWeb  
+            /*set communication b/w link and application and read and write data to the specified resource referred by the URL*/
+            URLConnection uc=u.openConnection();  
+          
+            InputStream is=uc.getInputStream();//gets data for the connection 
+            int i;  
+            StringBuilder sb=new StringBuilder();//create modifiable String  
+            while((i=is.read())!=-1){  
+                sb.append((char)i);  
+            }  
+            String source=sb.toString();//inputting source and converting to String
+            ta.setText(source);//set source text that is to be read  
+            }catch(Exception ex){
+                //providing the dialog box
+                JOptionPane.showMessageDialog(this,"Exception: "+ex);
+            }  
+        }  
+    }  
+    public static void main(String[] args) {  
+        new SourceGetter();  
+    }  
+}  
