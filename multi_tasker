@@ -1,0 +1,62 @@
+import java.util.Scanner;
+import java.io.*;
+public class multi_tasker
+{
+    public static void clearScreen() {
+        try
+        {
+            new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
+        }catch(Exception E)
+        {
+            System.out.println(E);
+        }
+    }    
+    public static void main(String [] args)throws IOException{
+        int optn;
+        String choice;
+        BufferedReader buf= new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Read the following instructions and enter the number according to you need...");
+        System.out.println("'1' to use Calculator");
+        System.out.println("'2' to use Password Generator");
+        System.out.println("'3' to use Puzzle Game");
+        System.out.println("'4' to use Tic Tac Toe Game");
+        System.out.println("'5' to use Word Counter Tool");
+        System.out.println("'6' to use IP Address Finder");
+        System.out.println("'7' to use Password Strength Checker");
+        System.out.println("'8' to use Source Code Generator");
+        System.out.println("'9' to use Exam System");
+        optn=Integer.parseInt(buf.readLine()); 
+       
+        switch(optn){
+            case 1:
+                new calculator();
+                break;
+            case 2:
+                new pass_generator();
+                break;
+            case 3:
+                new Puzzle();
+                break;
+            case 4:
+                new TicTacToeTest();
+                new TicTacToe();
+                break;
+            case 5:
+                new WordCounter();
+                break;
+            case 6:
+                new IPFinder();
+                break;
+            case 7:
+                new pass_strength_checker();
+                break;
+            case 8:
+                new SourceGetter();  
+                break;
+            case 9:
+                new examSystem();
+                //new Question();
+                break;
+        }
+    }
+}
