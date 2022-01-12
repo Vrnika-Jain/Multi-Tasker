@@ -1,0 +1,9 @@
+import java.io.*;
+class Question{
+    String qustn,ans;//qustn=questions, ans=answers
+    public Question(String qustn , String ans){//accepts input and store the question&ans when user enters
+        //System.out.println("WELCOME to the Quiz");
+        this.qustn=qustn;
+        this.ans=ans;
+    }
+}
