@@ -29,13 +29,13 @@ The Calculator application allows users to perform basic arithmetic operations s
 1. Run the application.
 2. Enter two numbers.
 3. Select the operation to perform from the following options:
-  - + for addition
-  - - for subtraction
-  - * for multiplication
-  - / for division
-  - ^ for power
-  - % for remainder
-  - ~ for square rooting (only uses the first number)
+  - '+' for addition
+  - '-' for subtraction
+  - '*' for multiplication
+  - '/' for division
+  - '^' for power
+  - '%' for remainder
+  - '~' for square rooting (only uses the first number)
 4. The result will be displayed.
 *Key Features*
 - Supports multiple arithmetic operations.
